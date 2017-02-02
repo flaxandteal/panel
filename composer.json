@@ -24,10 +24,16 @@
     "require": {
         "php": ">=5.4.0",        
         "illuminate/support": "~5.1",
-        "serverfireteam/rapyd-laravel" : "1.5.*",
+        "zofe/rapyd": "dev-feat/openstreetmap",
         "maatwebsite/excel": "~2.0.0",
 	"barryvdh/laravel-elfinder": "0.3.*"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/flaxandteal/rapyd-laravel"
+        }
+    ],
     "autoload": {
         "classmap": [
             "src/controllers",
