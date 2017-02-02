@@ -110,6 +110,12 @@ class CrudController extends Controller
         } else if (!in_array($this->entity, $configs)) {
             throw new \Exception('This url is not set yet !');
         } else {
+           if ($this->edit) {
+               return $this->edit->view('panelViews::edit', [
+                   'title' => $this->entity,
+                   'helper_message' => $this->helper_message
+               ]);
+           }
            return \View::make('panelViews::edit', array('title'		 => $this->entity,
 					                'edit' 		 => $this->edit,
 							'helper_message' => $this->helper_message));
