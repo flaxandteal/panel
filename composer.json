@@ -24,7 +24,7 @@
     "require": {
         "php": ">=5.4.0",        
         "illuminate/support": "~5.1",
-        "zofe/rapyd": "dev-feat/openstreetmap",
+        "zofe/rapyd": "dev-personal/development",
         "maatwebsite/excel": "~2.0.0",
 	"barryvdh/laravel-elfinder": "0.3.*"
     },
