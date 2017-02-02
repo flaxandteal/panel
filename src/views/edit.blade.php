@@ -10,6 +10,6 @@
     @endif
 
     <p>
-        {!! $edit !!}
+        {!! $form !!}
     </p>
 @stop
