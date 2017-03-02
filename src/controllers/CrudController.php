@@ -94,7 +94,7 @@ class CrudController extends Controller
         $this->helper_message = $message;
     }
 
-    public function returnView()
+    public function returnView($view)
     {
         $configs = \Serverfireteam\Panel\Link::returnUrls();
 
@@ -103,7 +103,7 @@ class CrudController extends Controller
         } else if (!in_array($this->entity, $configs)) {
             throw new \Exception('This url is not set yet!');
         } else {
-            return \View::make('panelViews::all', array(
+            return \View::make($view, array(
              'grid'           => $this->grid,
              'filter'         => $this->filter,
              'title'          => $this->entity ,
@@ -114,7 +114,7 @@ class CrudController extends Controller
         }
     }
 
-    public function returnEditView()
+    public function returnEditView($view='panelViews::edit')
     {
         $configs = \Serverfireteam\Panel\Link::returnUrls();
 
@@ -124,12 +124,12 @@ class CrudController extends Controller
             throw new \Exception('This url is not set yet !');
         } else {
            if ($this->edit) {
-               return $this->edit->view('panelViews::edit', [
+               return $this->edit->view($view, [
                    'title' => $this->entity,
                    'helper_message' => $this->helper_message
                ]);
            }
-           return \View::make('panelViews::edit', array('title'		 => $this->entity,
+           return \View::make($view, array('title'		 => $this->entity,
 					                'edit' 		 => $this->edit,
                                                         'features'       => $this->features['edit'],
 							'helper_message' => $this->helper_message));
