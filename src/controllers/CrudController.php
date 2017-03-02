@@ -94,7 +94,7 @@ class CrudController extends Controller
         $this->helper_message = $message;
     }
 
-    public function returnView($view)
+    public function returnView($viewname='panelViews::all', $array=[])
     {
         $configs = \Serverfireteam\Panel\Link::returnUrls();
 
@@ -103,18 +103,19 @@ class CrudController extends Controller
         } else if (!in_array($this->entity, $configs)) {
             throw new \Exception('This url is not set yet!');
         } else {
-            return \View::make($view, array(
-             'grid'           => $this->grid,
-             'filter'         => $this->filter,
-             'title'          => $this->entity ,
-             'current_entity' => $this->entity,
-             'import_message' => (\Session::has('import_message')) ? \Session::get('import_message') : '',
-             'features'       => $this->features['all']
-            ));
+            $array = array_merge([
+                'grid'           => $this->grid,
+                'filter'         => $this->filter,
+                'title'          => $this->entity ,
+                'current_entity' => $this->entity,
+                'import_message' => (\Session::has('import_message')) ? \Session::get('import_message') : '',
+                'features'       => $this->features['all']
+            ], $array);
+            return \View::make($viewname, $array);
         }
     }
 
-    public function returnEditView($view='panelViews::edit')
+    public function returnEditView($viewname='panelViews::edit', $array=[])
     {
         $configs = \Serverfireteam\Panel\Link::returnUrls();
 
@@ -123,16 +124,20 @@ class CrudController extends Controller
         } else if (!in_array($this->entity, $configs)) {
             throw new \Exception('This url is not set yet !');
         } else {
-           if ($this->edit) {
-               return $this->edit->view($view, [
-                   'title' => $this->entity,
-                   'helper_message' => $this->helper_message
-               ]);
-           }
-           return \View::make($view, array('title'		 => $this->entity,
-					                'edit' 		 => $this->edit,
-                                                        'features'       => $this->features['edit'],
-							'helper_message' => $this->helper_message));
+            if ($this->edit) {
+                $array = array_merge([
+                    'title' => $this->entity,
+                    'helper_message' => $this->helper_message
+                ], $array);
+                return $this->edit->view($viewname, $array);
+            }
+            $array = array_merge([
+                'title'          => $this->entity,
+                'edit'           => $this->edit,
+                'features'       => $this->features['edit'],
+                'helper_message' => $this->helper_message
+            ], $array);
+            return \View::make($viewname, $array);
         }
     }
 
