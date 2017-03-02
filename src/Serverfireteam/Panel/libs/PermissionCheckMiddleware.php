@@ -6,6 +6,7 @@ use Lang;
 use Closure;
 use Gate;
 
+use App\Models\Users\User;
 use Serverfireteam\Panel\Admin;
 
 class PermissionCheckMiddleware
@@ -22,7 +23,7 @@ class PermissionCheckMiddleware
     public function handle($request, Closure $next)
     {   
 
-        $admin= Admin::find((\Auth::user()->id));
+        $admin= User::find((\Auth::user()->id));
         
         $urlSegments   = $request->segments();
 
