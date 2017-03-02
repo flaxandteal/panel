@@ -15,6 +15,18 @@ class CrudController extends Controller
     protected $lang;
     public    $helper_message;
 
+    /**
+     * Check which features of the view should be included
+     */
+    protected $features = [
+        'all' => [
+            'import-button' => true,
+            'export-button' => true
+        ],
+        'edit' => [
+        ]
+    ];
+
     public function __construct(\Lang $lang)
     {
        // $this->entity = $params['entity'];
@@ -96,7 +108,8 @@ class CrudController extends Controller
              'filter'         => $this->filter,
              'title'          => $this->entity ,
              'current_entity' => $this->entity,
-             'import_message' => (\Session::has('import_message')) ? \Session::get('import_message') : ''
+             'import_message' => (\Session::has('import_message')) ? \Session::get('import_message') : '',
+             'features'       => $this->features['all']
             ));
         }
     }
@@ -112,6 +125,7 @@ class CrudController extends Controller
         } else {
            return \View::make('panelViews::edit', array('title'		 => $this->entity,
 					                'edit' 		 => $this->edit,
+                                                        'features'       => $this->features['edit'],
 							'helper_message' => $this->helper_message));
         }
     }
