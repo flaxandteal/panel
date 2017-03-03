@@ -13,6 +13,10 @@
 <button class="btn btn-warning" data-toggle="modal" data-target="#import_modal">{!! \Lang::get('panel::fields.importData') !!}</button>
 @endif
 
+@if ($features['return-button'])
+<button class="btn btn-info" data-toggle="modal" data-target="{!! $features['return-button']['target'] !!}">{!! $features['return-button']['label'] !!}</button>
+@endif
+
 <!-- Modal -->
 <div class="modal fade" id="import_modal" tabindex="-1" role="dialog" aria-labelledby="import_modal_label" aria-hidden="true">
 	<div class="modal-dialog">

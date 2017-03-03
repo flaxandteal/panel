@@ -21,7 +21,8 @@ class CrudController extends Controller
     protected $features = [
         'all' => [
             'import-button' => true,
-            'export-button' => true
+            'export-button' => true,
+            'return-button' => null
         ],
         'edit' => [
         ]
