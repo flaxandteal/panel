@@ -27,6 +27,7 @@ class AppHelper {
     }
 
     public function getModel($entity) {
+        $entity = str_replace(':', '\\', $entity);
         if ( in_array($entity, \Serverfireteam\Panel\Link::getMainUrls()) ) {
             $modelClass = 'Serverfireteam\\Panel\\'.$entity;
         } else {

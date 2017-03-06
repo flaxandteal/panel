@@ -13,12 +13,14 @@ use Illuminate\Routing\Controller;
 class MainController extends Controller {
 
 
-    public function entityUrl($entity, $methods){
+    public function entityUrl($entityUrl, $methods){
 
 
         $appHelper = new libs\AppHelper(); 
 
         $urls = Link::getMainUrls();
+
+        $entity = str_replace(':', '\\', $entityUrl);
 
         if ( in_array($entity, $urls)){
             $controller_path = 'Serverfireteam\Panel\\'.$entity.'Controller';
@@ -40,7 +42,7 @@ class MainController extends Controller {
     if (!method_exists($controller, $methods)){                
         throw new \Exception('Controller does not implement the CrudController methods!');               
     } else {
-        return $controller->callAction($methods, array('entity' => $entity));
+        return $controller->callAction($methods, array('entity' => $entityUrl));
     }
     
 }    
