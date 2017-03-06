@@ -48,10 +48,17 @@ class dashboard
                     if (! \Auth::user()->hasPermissionTo('view /' . $modelName . '/all'))
                         continue;
                     
+                $modelObject = \App::make($model);
+                if ($modelObject->dashboardCount !== null) {
+                    $count = $modelObject->dashboardCount;
+                } else {
+                    $count = $modelObject->count();
+                }
+
                 $dashboard[] = array(
                     'modelName' => $modelName,
                     'title'   => $value['display'],
-                    'count'   => $model::count(),
+                    'count'   => $count,
                     'showListUrl' => 'panel/' . $modelName . '/all',
                     'addUrl'      => 'panel/' . $modelName . '/edit',
                 );
