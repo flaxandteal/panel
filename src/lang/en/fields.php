@@ -16,6 +16,8 @@ return array(
     'login' => 'Login',
     'sendReminder' => 'Send Reminder',
     'passwordNotCorrect' => 'Your password or username is not correct!',
+    'passwordOnlyNotCorrect' => 'Your password is not correct!',
+    'passwordMismatch' => 'The passwords you entered did not match',
     'FirstName' => 'First Name',
     'LastName' => 'Last Name',
     'emailAddress' => 'Email Address',

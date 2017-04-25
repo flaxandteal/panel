@@ -125,12 +125,12 @@ class RemindersController extends Controller {
                     return \Redirect::to('/panel/changePassword')->with('message', \Lang::get('panel::fields.successfullChange'));
             } else {
                     return \Redirect::to('/panel/changePassword')
-                                    ->with('message', 'Passwords not matched!!')
+                                    ->with('message', \Lang::get('panel::fields.passwordMismatch'))
                                     ->with('mesType', 'error');
             }
         } else {
             return \Redirect::to('/panel/changePassword')
-                                 ->with('message', 'Password is not correct!!')
+                                 ->with('message', \Lang::get('panel::fields.passwordOnlyNotCorrect'))
                                  ->with('mesType', 'error');
         }
 	}
