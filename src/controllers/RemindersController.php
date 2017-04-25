@@ -122,7 +122,7 @@ class RemindersController extends Controller {
             if ($new_password['password'] == $retype_password['password_confirmation']) {
                     $user->password = \Hash::make($new_password['password']);
                     $user->save();
-                    return \Redirect::to('/panel/changePassword')->with('message', 'Successfully Changed Your Password!!');
+                    return \Redirect::to('/panel/changePassword')->with('message', \Lang::get('panel::fields.successfullChange'));
             } else {
                     return \Redirect::to('/panel/changePassword')
                                     ->with('message', 'Passwords not matched!!')

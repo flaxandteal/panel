@@ -39,6 +39,7 @@ return array(
     'close' => 'Close',
     'importDataSuccess' => 'Data is imported successfully.',
     'importDataFailure' => 'Data import failed, please check the validation of data.',
+    'successfullChange' => 'Your password has been changed successfully!',
     'successfullReset' => 'Your password has been reset successfully!',
     'successfullEditProfile' => 'Your profile is edited successfully.',
     'permissionHelp' => 'Permissions work with urls, in order to using for ** http://Serverfire.net/panel/url/access ** , Url field should be : urlaccess  .',

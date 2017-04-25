@@ -36,6 +36,7 @@ return array(
     'close' => 'Fermer',
     'importDataSuccess' => 'L\'import a été effectué correctement.',
     'importDataFailure' => 'L\'import a échoué, merci de vérifier le fichier d\'entrée.',
+    'successfullChange' => 'Votre mot de passe a bien été réinitialisé !',
     'successfullReset' => 'Votre mot de passe a bien été réinitialisé !',
     'successfullEditProfile' => 'Votre profil a été mis à jour.'
 );

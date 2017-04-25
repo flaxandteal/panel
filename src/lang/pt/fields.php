@@ -36,6 +36,7 @@ return array(
 	'close' => 'Fechar',
 	'importDataSuccess' => 'Dados importados com sucesso.',
 	'importDataFailure' => 'Falha ao importar dados, por favor verifique a validação das informações',
+	'successfullChange' => 'Senha resetada com sucesso!',
 	'successfullReset' => 'Senha resetada com sucesso!',
 	'successfullEditProfile' => 'Seu perfil foi alterado com sucesso.',
 );

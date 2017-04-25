@@ -39,6 +39,7 @@ return array(
     'close' => 'Sluiten',
     'importDataSuccess' => 'Gegevens zijn succesvol geïmporteerd.',
     'importDataFailure' => 'Gegevensimport is mislukt, controleer of de gegevens juist zijn.',
+    'successfullChange' => 'Uw wachtwoord is succesvol gewijzigd.',
     'successfullReset' => 'Uw wachtwoord is succesvol gewijzigd.',
     'successfullEditProfile' => 'Uw profiel is succesvol gewijzigd.',
     'permissionHelp' => 'Permissions work with urls, in order to using for ** http://Serverfire.net/panel/url/access ** , Url field should be : urlaccess  .',

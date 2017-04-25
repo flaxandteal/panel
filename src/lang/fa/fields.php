@@ -37,6 +37,7 @@ return array(
     'close' => 'بستن',
     'importDataSuccess' => 'اطلاعات با موفقیت وارد شد.',
     'importDataFailure' => '  اطلاعات وارد نشد ، لطفا از درست بودن اطلاعات مطمئن شوید',
+    'successfullChange' => 'کلمه عبور شما با موفقیت عوض شد',
     'successfullReset' => 'کلمه عبور شما با موفقیت عوض شد',
     'successfullEditProfile' => 'پروفایل شما با موفقیت تغییر کرد'
 );

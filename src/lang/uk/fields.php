@@ -39,6 +39,7 @@ return array(
     'close' => 'Закрити',
     'importDataSuccess' => 'Інформація імпортована успішно.',
     'importDataFailure' => 'Імпорт не вдався, будь ласка перевірте вхідні дані.',
+    'successfullChange' => 'Пароль успішно скинуто.',
     'successfullReset' => 'Пароль успішно скинуто.',
     'successfullEditProfile' => 'Профіль успішно змінено.',
     'permissionHelp' => 'Права доступу працюють з URL-адресами, для того, щоб, використовуючи для ** http://Serverfire.net/panel/url/access **, URL поле повинно бути: urlaccess.',

@@ -36,6 +36,7 @@ return array(
     'close' => 'Закрыть',
     'importDataSuccess' => 'Информация импортирована успешно.',
     'importDataFailure' => 'Импорт не удался, пожалуйста перепроверьте входящие данные.',
+    'successfullChange' => 'Пароль успешно сброшен.',
     'successfullReset' => 'Пароль успешно сброшен.',
     'successfullEditProfile' => 'Профиль успешно изменен.'
 );

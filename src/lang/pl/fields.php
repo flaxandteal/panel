@@ -37,6 +37,7 @@ return array(
     'close' => 'Zamknij',
     'importDataSuccess' => 'Dane zaimportowane poprawnie.',
     'importDataFailure' => 'Import niepoprawny, proszę sprawdzić poprawność danych.',
+    'successfullChange' => 'Twoje hasło zostało zresetowane pomyślnie!',
     'successfullReset' => 'Twoje hasło zostało zresetowane pomyślnie!',
     'successfullEditProfile' => 'Twój profil został zmieniony pomyślnie.'
 );
