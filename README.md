@@ -47,4 +47,6 @@ Pass: 12345
 
 Good news! We're currently available for remote and on-site consulting for small, large and enterprise teams. Please contact info@serverfire.net with your needs and let's work together!
 
+## Supplementary
 
+* As of Laravel 5.4, you must add `'panel-permissions' => 'Serverfireteam\Panel\libs\PermissionCheckMiddleware'` in `Kernel.php`.

@@ -27,7 +27,7 @@ Route::group(array('prefix' => 'panel', 'middleware' => ['web', 'role:,access_ba
 /**
  * Check Permission only on Model Controllers
  */
-    Route::group(array('middleware' => ['PermissionPanel']), function()
+    Route::group(array('middleware' => ['panel-permissions']), function()
     {
 
         Route::any('/{entity}/export/{type}', array('uses' => 'Serverfireteam\Panel\ExportImportController@export'));
