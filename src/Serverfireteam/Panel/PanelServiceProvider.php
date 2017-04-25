@@ -46,36 +46,31 @@ class PanelServiceProvider extends ServiceProvider
             $loader->alias('Excel', 'Maatwebsite\Excel\Facades\Excel');
         }
 
-        $this->app['panel::install'] = $this->app->share(function()
-        {
+        $this->app['panel::install'] = $this->app->singleton(function () {
             return new \Serverfireteam\Panel\Commands\PanelCommand();
         });
 
-        $this->app['panel::crud'] = $this->app->share(function()
-        {
+        $this->app['panel::crud'] = $this->app->singleton(function () {
             return new \Serverfireteam\Panel\Commands\CrudCommand();
         });
 
-        $this->app['panel::createmodel'] = $this->app->share(function()
-        {
-         $fileSystem = new Filesystem(); 
+        $this->app['panel::createmodel'] = $this->app->singleton(function () {
+            $fileSystem = new Filesystem();
 
-         return new \Serverfireteam\Panel\Commands\CreateModelCommand($fileSystem);
-     });
+            return new \Serverfireteam\Panel\Commands\CreateModelCommand($fileSystem);
+        });
 
-        $this->app['panel::createobserver'] = $this->app->share(function()
-        {
-         $fileSystem = new Filesystem(); 
+        $this->app['panel::createobserver'] = $this->app->singleton(function () {
+            $fileSystem = new Filesystem();
 
-         return new \Serverfireteam\Panel\Commands\CreateModelObserverCommand($fileSystem);
-     });
+            return new \Serverfireteam\Panel\Commands\CreateModelObserverCommand($fileSystem);
+        });
 
-        $this->app['panel::createcontroller'] = $this->app->share(function()
-        {
-         $fileSystem = new Filesystem();
+        $this->app['panel::createcontroller'] = $this->app->singleton(function () {
+            $fileSystem = new Filesystem();
 
-         return new \Serverfireteam\Panel\Commands\CreateControllerPanelCommand($fileSystem);
-     });
+            return new \Serverfireteam\Panel\Commands\CreateControllerPanelCommand($fileSystem);
+        });
 
         $this->commands('panel::createmodel');
 
@@ -109,8 +104,6 @@ class PanelServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(base_path() . '/vendor/serverfireteam/rapyd-laravel/lang', 'rapyd');
 
         AliasLoader::getInstance()->alias('Serverfireteam', 'Serverfireteam\Panel\Serverfireteam');
-
-
     }
 
     /**
