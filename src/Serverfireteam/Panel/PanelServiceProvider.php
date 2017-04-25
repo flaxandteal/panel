@@ -22,17 +22,19 @@ class PanelServiceProvider extends ServiceProvider
         // register zofe\rapyd
         $this->app->register('Zofe\Rapyd\RapydServiceProvider');
 
-        // 'Maatwebsite\Excel\ExcelServiceProvider'
-        $this->app->register('Maatwebsite\Excel\ExcelServiceProvider');
+        if (config('panel.excel', false)) {
+            // 'Maatwebsite\Excel\ExcelServiceProvider'
+            $this->app->register('Maatwebsite\Excel\ExcelServiceProvider');
+        }
 
-    	// Barryvdh\Elfinder\ElfinderServiceProvider
+        // Barryvdh\Elfinder\ElfinderServiceProvider
         $this->app->register('Barryvdh\Elfinder\ElfinderServiceProvider');
-        
+
         //middleware Permission
         $this->app['router']->middleware(
-            'PermissionPanel', 'Serverfireteam\Panel\libs\PermissionCheckMiddleware'
-            );
-
+            'PermissionPanel',
+            'Serverfireteam\Panel\libs\PermissionCheckMiddleware'
+        );
 
         /*
          * Create aliases for the dependency.
@@ -40,7 +42,9 @@ class PanelServiceProvider extends ServiceProvider
         $loader = AliasLoader::getInstance();
         $loader->alias('Form', 'Collective\Html\FormFacade');
         $loader->alias('Html', 'Collective\Html\HtmlFacade');
-        $loader->alias('Excel', 'Maatwebsite\Excel\Facades\Excel');
+        if (config('panel.excel', false)) {
+            $loader->alias('Excel', 'Maatwebsite\Excel\Facades\Excel');
+        }
 
         $this->app['panel::install'] = $this->app->share(function()
         {
