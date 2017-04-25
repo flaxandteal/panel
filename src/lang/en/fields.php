@@ -15,7 +15,7 @@ return array(
     'rememberMe' => 'Remember Me',
     'login' => 'Login',
     'sendReminder' => 'Send Reminder',
-    'passwordNotCorrect' => 'Either Password or username is not correct!!',
+    'passwordNotCorrect' => 'Your password or username is not correct!',
     'FirstName' => 'First Name',
     'LastName' => 'Last Name',
     'emailAddress' => 'Email Address',
@@ -37,16 +37,14 @@ return array(
     'keepOverwriteData' => 'Keep Previous Data and Overwrite Matching Keys',
     'keepNotOverwriteData' => 'Keep Previous Data and Don\'t Overwrite Matching Keys',
     'close' => 'Close',
-    'importDataSuccess' => 'Data is imported successfully.',
-    'importDataFailure' => 'Data import failed, please check the validation of data.',
+    'importDataSuccess' => 'Data has been imported successfully.',
+    'importDataFailure' => 'Data import failed, please re-validate your data.',
     'successfullChange' => 'Your password has been changed successfully!',
     'successfullReset' => 'Your password has been reset successfully!',
-    'successfullEditProfile' => 'Your profile is edited successfully.',
+    'successfullEditProfile' => 'Your profile has been edited successfully.',
     'permissionHelp' => 'Permissions work with urls, in order to using for ** http://Serverfire.net/panel/url/access ** , Url field should be : urlaccess  .',
-    'roleHelp' => 'Role can have many permission.',
+    'roleHelp' => 'Roles can have many permissions.',
     'links_help' => "The 'Edit Links' form is used for adding a link in the sidebar menu of panel. The value of 'Display' field specifies the label of the link to be displayed in the menu and the value of 'Link' field specifies the name of the model.",
     'dataSavedSuccessfull' => 'Awesome!, data saved, to save again with new data click on save.',
-
-
 
 );
