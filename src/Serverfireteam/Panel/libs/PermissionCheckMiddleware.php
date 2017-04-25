@@ -6,7 +6,7 @@ use Lang;
 use Closure;
 use Gate;
 
-use App\Models\Users\User;
+use App\User;
 use Serverfireteam\Panel\Admin;
 
 class PermissionCheckMiddleware

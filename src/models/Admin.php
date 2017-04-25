@@ -1,7 +1,7 @@
 <?php
 namespace Serverfireteam\Panel;
 
-use App\Models\Users\User;
+use App\User;
 
 class Admin extends User {
 
