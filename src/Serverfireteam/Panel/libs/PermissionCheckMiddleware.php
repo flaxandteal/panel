@@ -7,6 +7,7 @@ use Closure;
 use Gate;
 
 use App\User;
+use Spatie\Permission\Models\Permission;
 use Serverfireteam\Panel\Admin;
 
 class PermissionCheckMiddleware
@@ -35,15 +36,19 @@ class PermissionCheckMiddleware
 
                 $PermissionToCheck = 'view /' . $urlSegments[1] . '/' . $urlSegments[2];
 
-                if($admin->hasPermissionTo($PermissionToCheck)){
+                if (Permission::whereName($permissionToCheck)->count()) {
+                    if ($admin->hasPermissionTo($PermissionToCheck)) {
 
-                    return $next($request);
-                }else{
-                    /**
-                     * Show Access denied page to User
-                     */
-                    
-                    abort(403);
+                        return $next($request);
+                    } else {
+                        /**
+                         * Show Access denied page to User
+                         */
+                        
+                        abort(403);
+                    }
+                } else {
+                    abort(404);
                 }
             }
             return $next($request);
