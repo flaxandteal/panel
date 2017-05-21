@@ -34,10 +34,10 @@ class PermissionCheckMiddleware
         }else{
             if (key_exists(2 , $urlSegments)){
 
-                $PermissionToCheck = 'view /' . $urlSegments[1] . '/' . $urlSegments[2];
+                $permissionToCheck = 'view /' . $urlSegments[1] . '/' . $urlSegments[2];
 
                 if (Permission::whereName($permissionToCheck)->count()) {
-                    if ($admin->hasPermissionTo($PermissionToCheck)) {
+                    if ($admin->hasPermissionTo($permissionToCheck)) {
 
                         return $next($request);
                     } else {
