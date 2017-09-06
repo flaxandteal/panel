@@ -2,15 +2,23 @@
 namespace Serverfireteam\Panel;
 
 use Illuminate\Auth\Authenticatable;
+<<<<<<< HEAD
 use App\Models\Users\User;
 use Illuminate\Auth\Passwords\CanResetPassword;
+||||||| merged common ancestors
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Auth\Passwords\CanResetPassword;
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> master
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Notifications\Notifiable;
 
 class Admin extends User implements AuthenticatableContract, CanResetPasswordContract {
 
-    use CanResetPassword;
+    use AdminCanResetPassword;
     use HasRoles;
 
     protected static function boot()
@@ -30,8 +38,8 @@ class Admin extends User implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('Serverfireteam\Panel\Role', 'role_user', 'user_id');
     }
 
-    public function getReminderEmail(){  
+    public function getReminderEmail(){
         $email = Input::only('email');
-        return $email['email'];            
+        return $email['email'];
     }
 }
