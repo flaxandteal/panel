@@ -32,10 +32,13 @@ class AppHelper
         }
     }
 
-    public function getModel($entity)
-    {
-        $entity = str_replace(':', '\\', $entity);
-        if (in_array($entity, \Serverfireteam\Panel\Link::getMainUrls())) {
+    /**
+     * For the given entity name, the the corresponding Model's class
+     * @param string $entity
+     * @return string
+     */
+    public function getModel($entity) {
+        if ( \Links::isMain($entity) ) {
             $modelClass = 'Serverfireteam\\Panel\\'.$entity;
         } else {
             if (!empty(\Config::get('panel.modelPath'))) {

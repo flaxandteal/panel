@@ -1,71 +1,87 @@
 <?php
+
 namespace Serverfireteam\Panel\libs;
 
+
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+use Serverfireteam\Panel\LinkRepository;
 
 class dashboard
 {
 
+    /**
+     * Dashboard items cache
+     * @var array
+     */
     public static $dashboardItems;
 
-    public static $urls;
-
-    public static function getItems()
+    /**
+     * Either retrieve the dashboard items from cache or from the config/DB if they were not yet cached
+     * @return array
+     */
+    public static function getItems ()
     {
-        if(!self::$dashboardItems) {
-            self::$dashboardItems = self::create();
+        if (!self::$dashboardItems) {
+            self::$dashboardItems = \App::call(self::class . '@create');
         }
 
         return self::$dashboardItems;
     }
 
-    public static function create()
+    /**
+     * Determine whether to show the given entity type in the panel
+     * @param $link
+     * @return bool
+     */
+    private function showLink ($link)
     {
-        self::$urls = \Config::get('panel.panelControllers');
+        if (!$link['show_menu']) return false;
 
-        $config    = \Serverfireteam\Panel\Link::allCached();
-        $dashboard = array();
+        $user = \Auth::user();
+        return $user->hasRole('admin') ||
+            $user->hasPermissionTo('view /' . $modelName . '/all');
+    }
 
-        $appHelper = new AppHelper();
+    /**
+     * Return the array of entity types (models / links)
+     * to show CRUD interfaces for in the panel
+     *
+     * @param AppHelper      $appHelper
+     * @param LinkRepository $linkRepository
+     *
+     * @return array
+     */
+    public function create (AppHelper $appHelper, LinkRepository $linkRepository)
+    {
+        // @TODO cache
 
-        // Make Dashboard Items
-        foreach ($config as $value) {
+        return $linkRepository->all()
 
-    	    $modelName = $value['url'];
-            /*
-            if ( in_array($modelName, self::$urls)) {
-               $model = "Serverfireteam\\Panel\\".$modelName;
-            } else {
-               $model = $appHelper->getNameSpace() . $modelName;
-            }
-            */
-            $model = $appHelper->getModel($modelName);
+            ->filter(function ($link) {
+                return $this->showLink($link);
+            })
 
-            //if (class_exists($value)) {
-            if($value['show_menu'])
-            {
-                $user = \Auth::user();
-                if (! $user->hasRole('admin'))
-                    if (! \Auth::user()->hasPermissionTo('view /' . $modelName . '/all'))
-                        continue;
-                    
-                $modelObject = \App::make($model);
+            ->map(function ($link) use ($appHelper) {
+
+                $modelName = $link['url'];
+
+                $modelObject = $appHelper->getModel($modelName);
                 if ($modelObject->dashboardCount !== null) {
                     $count = $modelObject->dashboardCount;
                 } else {
                     $count = $modelObject->count();
                 }
 
-                $dashboard[] = array(
-                    'modelName' => $modelName,
-                    'title'   => $value['display'],
-                    'count'   => $count,
+                return [
+                    'modelName'   => $modelName,
+                    'title'       => $link['display'],
+                    'count'       => $count,
                     'showListUrl' => 'panel/' . $modelName . '/all',
                     'addUrl'      => 'panel/' . $modelName . '/edit',
-                );
-            }
-            
-        }
+                ];
+            })
 
-       return $dashboard;
+            ->toArray();
     }
 }

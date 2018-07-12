@@ -18,11 +18,7 @@ class MainController extends Controller {
 
         $appHelper = new libs\AppHelper(); 
 
-        $urls = Link::getMainUrls();
-
-        $entity = str_replace(':', '\\', $entityUrl);
-
-        if ( in_array($entity, $urls)){
+        if ( \Links::isMain($entity)){
             $controller_path = 'Serverfireteam\Panel\\'.$entity.'Controller';
         } else {           
             $panel_path = \Config::get('panel.controllers');
@@ -36,7 +32,7 @@ class MainController extends Controller {
     try{
         $controller = \App::make($controller_path);
     }catch(\Exception $ex){
-        throw new \Exception("Can not found the Controller ( $controller_path ) ");               
+        throw new \Exception("Controller not found ( $controller_path ) ");
     }
 
     if (!method_exists($controller, $methods)){                

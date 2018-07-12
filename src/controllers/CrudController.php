@@ -97,49 +97,46 @@ class CrudController extends Controller
 
     public function returnView($viewname='panelViews::all', $array=[])
     {
-        $configs = \Serverfireteam\Panel\Link::returnUrls();
+        $this->validateEntity($this->entity);
+        $array = array_merge([
+          'grid'           => $this->grid,
+          'filter'         => $this->filter,
+          'title'          => $this->entity ,
+          'current_entity' => $this->entity,
+          'import_message' => (\Session::has('import_message')) ? \Session::get('import_message') : '',
+          'features'       => $this->features['all']
+        ], $array);
+        return \View::make($viewname, $array);
+    }
 
-        if (!isset($configs) || $configs == null) {
-            throw new \Exception('NO URL is set yet !');
-        } else if (!in_array($this->entity, $configs)) {
+    /**
+     * Check whether a link is defined for the given URL / model name
+     * @param $url
+     * @throws \Exception
+     */
+    private function validateEntity($url) {
+        if (!\Links::all()->pluck('url')->contains($url)) {
             throw new \Exception('This url is not set yet!');
-        } else {
-            $array = array_merge([
-                'grid'           => $this->grid,
-                'filter'         => $this->filter,
-                'title'          => $this->entity ,
-                'current_entity' => $this->entity,
-                'import_message' => (\Session::has('import_message')) ? \Session::get('import_message') : '',
-                'features'       => $this->features['all']
-            ], $array);
-            return \View::make($viewname, $array);
         }
     }
 
     public function returnEditView($viewname='panelViews::edit', $array=[])
     {
-        $configs = \Serverfireteam\Panel\Link::returnUrls();
-
-        if (!isset($configs) || $configs == null) {
-            throw new \Exception('NO URL is set yet !');
-        } else if (!in_array($this->entity, $configs)) {
-            throw new \Exception('This url is not set yet !');
-        } else {
-            if ($this->edit) {
-                $array = array_merge([
-                    'title' => $this->entity,
-                    'helper_message' => $this->helper_message
-                ], $array);
-                return $this->edit->view($viewname, $array);
-            }
+        $this->validateEntity($this->entity);
+        if ($this->edit) {
             $array = array_merge([
-                'title'          => $this->entity,
-                'edit'           => $this->edit,
-                'features'       => $this->features['edit'],
+                'title' => $this->entity,
                 'helper_message' => $this->helper_message
             ], $array);
-            return \View::make($viewname, $array);
+            return $this->edit->view($viewname, $array);
         }
+        $array = array_merge([
+            'title'          => $this->entity,
+            'edit'           => $this->edit,
+            'features'       => $this->features['edit'],
+            'helper_message' => $this->helper_message
+        ], $array);
+        return \View::make($viewname, $array);
     }
 
     public function finalizeFilter() {
