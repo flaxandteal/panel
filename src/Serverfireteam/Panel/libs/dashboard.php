@@ -74,7 +74,7 @@ class dashboard
                 return [
                     'modelName'   => $modelName,
                     'title'       => $link['display'],
-                    'count'       => $model::count(),
+                    'count'       => app()->make($model)->count(),
                     'showListUrl' => 'panel/' . $modelName . '/all',
                     'addUrl'      => 'panel/' . $modelName . '/edit',
                 ];

@@ -26,7 +26,7 @@ class PermissionCheckMiddleware
         
         $urlSegments   = $request->segments();
 
-        if ($admin->hasRole('admin')) {
+        if ($admin->hasRole(config('panel.adminRole', 'admin'))) {
             return $next($request);
         } else {
             if (key_exists(2, $urlSegments)) {

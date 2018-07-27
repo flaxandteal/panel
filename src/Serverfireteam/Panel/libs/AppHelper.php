@@ -38,7 +38,7 @@ class AppHelper
     public function getModel($entity)
     {
         if (\Links::isMain($entity)) {
-            $modelClass = 'Serverfireteam\\Panel\\'.$entity;
+            $modelClass = 'Serverfireteam\\Panel\\' . $entity;
         } else {
             if (!empty(\Config::get('panel.modelPath'))) {
                 $modelClass = $this->getNameSpace() . \Config::get('panel.modelPath') . '\\' . $entity;
