@@ -19,6 +19,12 @@ class PanelServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->booting(function () {
+            $loader = AliasLoader::getInstance();
+            $panelAdmin = config('panel.adminUserClass', \App\User::class);
+            $loader->alias('Serverfireteam\Panel\UserAlias', $panelAdmin);
+        });
+
         $this->publishes([
             __DIR__.'/config/elfinder.php' => config_path('elfinder.php'),
             ]);
