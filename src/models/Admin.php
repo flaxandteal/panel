@@ -1,10 +1,10 @@
 <?php
 namespace Serverfireteam\Panel;
 
-use App\User;
+use Serverfireteam\Panel\UserAlias as AppUser;
 
 // Delegate auth
-class Admin extends User
+class Admin extends AppUser
 {
     public $table = 'users';
 

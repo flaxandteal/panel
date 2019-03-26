@@ -15,6 +15,7 @@ return array(
     ),
     'logo'=>'packages/serverfireteam/panel/img/logo.png', // logo of Panel
     'modelPath' => '', // specific model path in the app folder e.g. 'Models'
+    'adminUserClass' => '\App\User',
 
     // Uncomment the section below to use links specified here rather than in the DB table "links"
     // 'links' => [
