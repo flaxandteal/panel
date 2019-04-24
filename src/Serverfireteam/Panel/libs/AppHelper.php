@@ -37,6 +37,7 @@ class AppHelper
      */
     public function getModel($entity)
     {
+        $entity = $this->getEntity($entity);
         if (\Links::isMain($entity)) {
             $modelClass = 'Serverfireteam\\Panel\\' . $entity;
         } else {
@@ -47,5 +48,15 @@ class AppHelper
             }
         }
         return $modelClass;
+    }
+
+    /**
+     * For the given entity name, make any necessary substitutions
+     * @param string $entity
+     * @return string
+     */
+    public function getEntity($entity)
+    {
+        return str_replace(\Config::get('panel.classDelimiter', ':'), '\\', $entity);
     }
 }

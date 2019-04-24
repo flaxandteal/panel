@@ -13,6 +13,7 @@ return array(
        'Role',
        'Link'
     ),
+    'classDelimiter' => ':',
     'logo'=>'packages/serverfireteam/panel/img/logo.png', // logo of Panel
     'modelPath' => '', // specific model path in the app folder e.g. 'Models'
     'adminUserClass' => '\App\User',

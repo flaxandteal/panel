@@ -16,9 +16,8 @@ class MainController extends Controller
 
     public function entityUrl($entity, $methods)
     {
-
-
         $appHelper = new libs\AppHelper();
+        $entity = $appHelper->getEntity($entity);
 
         if (\Links::isMain($entity)) {
             $controller_path = 'Serverfireteam\Panel\\'.$entity.'Controller';
