@@ -24,7 +24,7 @@ class PanelServiceProvider extends ServiceProvider
             ]);
 
         // register zofe\rapyd
-        $this->app->register('Zofe\Rapyd\RapydServiceProvider');
+        // $this->app->register('Zofe\Rapyd\RapydServiceProvider');
 
         if (config('panel.excel', false)) {
             // 'Maatwebsite\Excel\ExcelServiceProvider'
