@@ -26,7 +26,7 @@
         "illuminate/support": "~6.0",
         "barryvdh/laravel-elfinder": "^0.4",
         "spatie/laravel-permission": "^3.0",
-        "zofe/rapyd": "dev-personal/development",
+        "serverfireteam/rapyd-laravel": "dev-personal/development",
         "maatwebsite/excel": "^3.1"
     },
     "repositories": [
