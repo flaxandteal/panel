@@ -24,7 +24,7 @@
     "require": {
         "php": "^7.2",
         "illuminate/support": "~6.0",
-        "barryvdh/laravel-elfinder": "0.3.*",
+        "barryvdh/laravel-elfinder": "^0.4",
         "spatie/laravel-permission": "^3.0",
         "maatwebsite/excel": "^3.1"
     },
