@@ -22,8 +22,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",        
-        "illuminate/support": "~5.1",
+        "php": "^7.2",
+        "illuminate/support": "~6.0",
         "zofe/rapyd": "dev-personal/development",
         "barryvdh/laravel-elfinder": "0.3.*",
         "spatie/laravel-permission": "^3.0",
